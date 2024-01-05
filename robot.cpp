@@ -15,9 +15,9 @@ vector<pair<int,int>> Adjacent[SIZE]; // neighbor,weight
 vector<pair<int,int>> Result;
 set<pair<int,int>> Visitted;
 
-int Distance[SIZE][SIZE] = {};
+int Distance[SIZE][SIZE] {};
 int n,m,a,b,c,d,r;
-size_t count = 0;
+size_t count {};
 
 void fileinput(){
     int x,y,w;
@@ -27,6 +27,11 @@ void fileinput(){
     getline(f,s);
     stringstream ss(s);
     ss >> n >> m;
+    for(size_t i {} ; i < n ; ++i){
+        for(size_t ii {} ; ii < n ; ++ii){
+            Distance[i][ii] = infty;
+        }
+    }
     for(size_t i {} ; i < m ; ++i){
         string sss;
         getline(f,sss);
@@ -64,7 +69,7 @@ void dijsktra(int source){
     pair<int , int> cur {};
     int current_distance[n] {};
     for(size_t i{} ; i < n ; ++i)   current_distance[i] = infty; //khoi tao
-    current_distance[source] = 0;
+    current_distance[source] {};
     pq.push({0,source});
     while(!pq.empty()){
         cur = pq.top();
@@ -101,6 +106,10 @@ void schedule(int current_A, int current_B){
         for(auto x : Result){
             cout << x.first << " " << x.second << " " << Distance[x.first][x.second] << endl;
         }
+        exit(0);
+    }
+    else if (count == STOP){
+        cout << "Takes to many moves!" << endl;
         exit(0);
     }
     else{
